@@ -1,1 +1,1 @@
-# portfolio-generatorr
+# portfolio-generator
