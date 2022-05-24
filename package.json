@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "profile-generator",
-=======
   "name": "portfolio-generator",
->>>>>>> 4284409e998827a4620e913650f79807f330b467
   "version": "1.0.0",
   "description": "",
   "main": "app.js",

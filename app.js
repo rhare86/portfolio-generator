@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 
-<<<<<<< HEAD
 inquirer 
   .prompt([
     {
@@ -13,7 +12,6 @@ inquirer
 
 // const fs = require('fs');
 
-=======
 const promptProject = portfolioData => {
 
     // If there's no 'projects' array property, create one
@@ -145,31 +143,10 @@ promtUser()
     });
 
 // const fs = require('fs');
->>>>>>> 4284409e998827a4620e913650f79807f330b467
 // const generatePage = require('./src/page-template');
 
 // const pageHTML = generatePage(name, github);
 
-<<<<<<< HEAD
-// fs.writeFile('./index.html', pageHTML, err => {
-  // if (err) throw err;
-
-  // console.log('Portfolio complete! Check out index.html to see the output!');
-// });
-
-
-/*
-const printProfileData = profileDataArr => {
-    //This...
-    for (let i = 0; i < profileDataArr.length; i += 1) {
-        console.log(profileDataArr[i]);
-    }
-console.log('=================');
-
-    // is the same as this...
-profileDataArr.forEach(profileItem => console.log(profileItem));
-};
-=======
 // fs.writeFile('./index.html', generatePage(name, github), err => {
 //    if (err) throw err;
 
@@ -195,5 +172,4 @@ const printProfileData = profileDataArr => {
         console.log(profileItem));
 };
 
->>>>>>> 4284409e998827a4620e913650f79807f330b467
 printProfileData(profileDataArgs); */
