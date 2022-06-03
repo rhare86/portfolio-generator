@@ -1,4 +1,6 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+const generatePage = require('./src/page-template');
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -23,6 +25,7 @@ const promptUser = () => {
             if (githubInput) {
               return true;
             } else {
+              console.log('Please enter your GitHub username!');
               return false;
             }
           }
@@ -37,25 +40,22 @@ const promptUser = () => {
         type: 'input',
         name: 'about',
         message: 'Provide some information about yourself:',
-        when: ({ confirmAbout }) => {
-          if (confirmAbout) {
-            return true;
-          } else {
-            return false;
-          }
+        when: ({ confirmAbout }) => confirmAbout
         }
-      }
     ]);
-  };
+    };
+
   const promptProject = portfolioData => {
-    if (!portfolioData.projects) {
-      portfolioData.projects = [];
-    }
     console.log(`
   =================
   Add a New Project
   =================
   `);
+
+    if (!portfolioData.projects) {
+      portfolioData.projects = [];
+    }
+    
     return inquirer.prompt([
       {
         type: 'input',
@@ -65,6 +65,7 @@ const promptUser = () => {
           if (projectNameInput) {
             return true;
           } else {
+            console.log('You need to enter a project name!');
             return false;
           }
         }
@@ -77,6 +78,7 @@ const promptUser = () => {
           if (projectDescriptionInput) {
             return true;
           } else {
+            console.log('You need to enter a project description!');
             return false;
           }
         }
@@ -95,6 +97,7 @@ const promptUser = () => {
           if (projectLinkInput) {
             return true;
           } else {
+            console.log('You need to enter a project GigHub link!');
             return false;
           }
         }
@@ -121,15 +124,20 @@ const promptUser = () => {
       }    
     });
   };
-  
+    
+
   promptUser()
   .then(promptProject)
   .then(portfolioData => {
-    console.log(portfolioData);
-  });
+    const pageHTML = generatePage(portfolioData);
 
-// const fs = require('fs');
-// const generatePage = require('./src/page-template');
+    fs.writeFile('./index.html', pageHTML, err => {
+      if (err) throw new Error(err);
+
+      console.log('Page created! Check out index.html in this directory to see it!');
+
+  }); 
+});
 
 // const pageHTML = generatePage(name, github);
 
